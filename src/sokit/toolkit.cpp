@@ -399,7 +399,24 @@ bool TK::ascii2bin(const QString& src, QByteArray& dst, QString& err)
 		}
 	}
 
-	return (ERR != status);
+    return (ERR != status);
+}
+
+QString TK::longhexstring2addspace(const QString &src)
+{
+    QString org = src;
+    int size= org.size();
+    int n = 2;
+    int space= qRound(size*1.0/n+0.5)-1;
+
+    for(int i=0,pos=n;i<space;++i,pos+=(n+1))
+    {
+        org.insert(pos,' ');
+    }
+    org.insert(0,'[');
+    org.append(']');
+
+    return org;
 }
 
 char* TK::createBuffer(qint64& cap, qint64 limit)

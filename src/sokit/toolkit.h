@@ -25,6 +25,12 @@ public:
 	static QString bin2hex(const char* buf, uint len);
 	static QString bin2ascii(const char* buf, uint len);
 	static bool ascii2bin(const QString& src, QByteArray& dst, QString& err);
+    /**
+     * @brief longhexstring2addspace
+     * @param src     AABBCC to  [AA BB CC]
+     * @return
+     */
+    static QString longhexstring2addspace(const QString& src);
 
 	static char* createBuffer(qint64& cap, qint64 limit);
 	static void  releaseBuffer(char*& buf);

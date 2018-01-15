@@ -172,8 +172,12 @@ void BaseForm::send()
 {
 	QLineEdit* e = (QLineEdit*)sender()->property(PROP_EDIT).value<void*>();
 	QComboBox* d = (QComboBox*)sender()->property(PROP_DIRT).value<void*>();
-	if (e)
-		send(e->text(), (d?d->currentText():""));
+    if (e){
+        // add nathanjoy
+        // hex str to string  AABBCC to  [AA BB CC]
+        send(TK::longhexstring2addspace(e->text()), (d?d->currentText():""));
+    }
+
 }
 
 void BaseForm::clear()
